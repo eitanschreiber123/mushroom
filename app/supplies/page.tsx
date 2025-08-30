@@ -1,53 +1,48 @@
 "use client"
-import {
-  Search,
-  ShoppingCart,
-  Facebook,
-  Twitter,
-  Paintbrush as Pinterest,
-  Instagram,
-  ChevronLeft,
-  ChevronRight,
-} from "lucide-react"
+import { Search, ShoppingCart, Facebook, Twitter, Paintbrush as Pinterest, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import Link from "next/link"
-import Image from "next/image"
+import Link from 'next/link';
+import Image from "next/image";
 
-export default function HomePage() {
-  const featuredProducts = [
+export default function SuppliesPage() {
+  const products = [
     {
       id: 1,
-      name: "Coral Tooth & Black Soy",
-      price: "$129.00",
-      image: "/home_2.jpg",
-      buttonText: "BUY NOW",
+      name: "Oyster (Pleurotus ostreatus) Culture",
+      price: "$12.00",
+      image: "/supplies_1.jpg",
     },
-    {
-      id: 2,
-      name: "Shiitake 3-Season Collection - Plug Kit",
-      price: "$75.00",
-      image: "/home_3.jpg",
-      buttonText: "BUY NOW",
+    {id: 2,name: "Wax Containers for Mushroom Cultivation",
+      price: "$18.50",image: "/supplies_2.jpg",
     },
-    {
-      id: 3,
-      name: "Oyster - Box (Pleurotus ostreatus) Grain Spawn",
-      price: "$24.00",
-      image: "/home_4.jpg",
-      buttonText: "BUY NOW",
+    {id: 3,name: "Aluminum Identification Tags",
+      price: "$8.75",image: "/supplies_3.jpg",
     },
-    {
-      id: 4,
-      name: "Oyster 'Winter White'™ (Pleurotus ostreatus) Grain Spawn",
-      price: "$24.00",
-      image: "/home_5.jpg",
-      buttonText: "BUY NOW",
+    {id: 4,name: "Mushroom Fruiting Blankets",
+      price: "$32.00",image: "/supplies_4.jpg",
+    },
+    {id: 5,name: "Red Reishi (Ganoderma lucidum) Culture",
+      price: "$15.00",image: "/supplies_5.jpg",
+    },
+    {id: 6,name: "Mushroom Cultivation Spawn Bags",
+      price: "$22.50",image: "/supplies_6.jpg",
+    },
+    {id: 7,name: "Sterilized Straw Logs for Mushrooms",
+      price: "$45.00",image: "/supplies_7.jpg",
+    },
+    {id: 8,name: "Compost Thermometer Gauge",
+      price: "$28.99",image: "/supplies_8.jpg",
+    },
+    {id: 9,name: "Substrate Enhancer",
+      price: "$24.99",
+      image: "/both.png",
     },
   ]
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Top Banner */}
       <div className="bg-gray-600 text-white text-center py-2 text-sm">
         <span className="mr-8">What we know about Golden Oyster</span>
         <span className="bg-white text-gray-600 px-3 py-1 text-xs">READ THE BLOG</span>
@@ -90,7 +85,6 @@ export default function HomePage() {
       display: flex;
       width:100%;
       justify-content:space-evenly;
-      flex-wrap:wrap;
     }
 
     nav ul li {
@@ -190,98 +184,36 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="relative">
-        <div className="relative h-96 bg-cover bg-center" style={{ backgroundImage: "url('/home_1.jpg')" }}>
-          <div className="absolute inset-0 bg-opacity-40"></div>
-          <div className="relative z-10 flex items-center justify-between h-full px-8">
-            <button className="text-white hover:text-gray-300">
-              <ChevronLeft className="h-8 w-8" />
-            </button>
-
-            <div className="text-center text-white">
-              <div className="bg-white text-black p-6 rounded-lg inline-block">
-                <div className="text-4xl font-bold mb-2">$136</div>
-                <div className="text-sm">
-                  includes shipping
-                  <br />
-                  within lower 48
-                </div>
-              </div>
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+          {/* Main Content Area */}
+          <main className="flex-1" style={{display:'flex',flexDirection:'column'}}>
+            <div className="mb-6" style={{textAlign:'center'}}>
+              <h1 className="text-2xl font-serif text-gray-800 mb-2">Supplies</h1>
+              <p className="text-gray-600">Essential supplies for mushroom cultivation</p>
             </div>
 
-            <button className="text-white hover:text-gray-300">
-              <ChevronRight className="h-8 w-8" />
-            </button>
-          </div>
-        </div>
-
-        <div className="bg-gray-800 text-white py-4">
-          <div className="max-w-7xl mx-auto px-4 flex justify-between items-center">
-            <div className="flex items-center space-x-4">
-              <span className="text-sm">Follow us</span>
-              <Facebook className="h-5 w-5" />
-              <Twitter className="h-5 w-5" />
-              <Pinterest className="h-5 w-5" />
-              <Instagram className="h-5 w-5" />
+            {/* Product Grid */}
+            <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6">
+              {products.map((product) => (
+                <Link
+                href="/substrate-enhancer"
+                  key={product.id}
+                  className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow"
+                >
+                  <Image
+                    src={product.image || "/placeholder.svg?height=200&width=200"}
+                    alt={product.name}
+                    className="w-full h-48 object-cover mb-4 rounded"
+                  />
+                  <h3 className="text-sm font-medium text-gray-800 mb-2 line-clamp-2">{product.name}</h3>
+                </Link>
+              ))}
             </div>
+          </main>
+      </div>
 
-            <div className="flex items-center space-x-4">
-              <Image src="/mosa.png" alt="Field & Forest Products" className="h-8 w-8" />
-              <span className="text-sm">Receive our Newsletter and Special Offers</span>
-              <Button className="bg-white text-gray-800 hover:bg-gray-100 text-xs px-4 py-1">SIGN UP NOW</Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-12">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-2xl font-serif text-center text-gray-800 mb-8">Featured Products</h2>
-
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-6">
-            {featuredProducts.map((product) => (
-              <div key={product.id} className="text-center">
-                <Image
-                  src={product.image || "/placeholder.svg?height=200&width=200"}
-                  alt={product.name}
-                  className="w-full h-48 object-cover mb-4 rounded"
-                />
-                <h3 className="text-sm font-medium text-gray-800 mb-2">{product.name}</h3>
-                <p className="text-lg font-bold text-gray-900 mb-3">{product.price}</p>
-                <Button className="bg-gray-200 text-gray-800 hover:bg-gray-300 text-xs px-4 py-2">
-                  {product.buttonText}
-                </Button>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Button className="bg-gray-600 text-white hover:bg-gray-700 px-6 py-2">VIEW MORE</Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="relative py-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: "url('/mushroom-background.png')" }}
-        >
-          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
-        </div>
-
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl font-serif mb-6">Welcome to Growing Your Own Mushrooms</h2>
-          <p className="text-lg leading-relaxed">
-            Here at Japan-discovered Field & Forest Products we help you succeed with spawn and other essential organic
-            mushroom spawn supplies. We are a family-owned business located in Peshtigo, Wisconsin, and we are a
-            commercial grower as a backyard, you can be that you are successful in growing mushrooms.
-          </p>
-          <p className="text-lg leading-relaxed mt-4">
-            New to mushroom growing? Begin by exploring our RESOURCES for advice!
-          </p>
-        </div>
-      </section>
-
+      {/* Footer */}
       <footer className="bg-gray-800 text-white">
         <div className="max-w-7xl mx-auto px-4 py-4">
           <div className="flex justify-between items-center">
