@@ -85,6 +85,7 @@ export default function SuppliesPage() {
       display: flex;
       width:100%;
       justify-content:space-evenly;
+      flex-wrap:wrap;
     }
 
     nav ul li {

@@ -51,6 +51,7 @@ export default function SubstrateEnhancerPage() {
       display: flex;
       width:100%;
       justify-content:space-evenly;
+      flex-wrap:wrap;
     }
 
     nav ul li {
@@ -200,7 +201,7 @@ export default function SubstrateEnhancerPage() {
         {/* Products Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Solid Product */}
-          <Link href="/substrate-enhancer/liquid" className="bg-white border rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
+          <Link href="/substrate-enhancer/solid" className="bg-white border rounded-lg p-6 text-center hover:shadow-lg transition-shadow">
             <div className="mb-4">
               <Image
                 src="/bag.png"

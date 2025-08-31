@@ -87,6 +87,7 @@ export default function ProductPage({ params }) {
             display: flex;
             width:100%;
             justify-content:space-evenly;
+            flex-wrap:wrap;
           }
       
           nav ul li {
